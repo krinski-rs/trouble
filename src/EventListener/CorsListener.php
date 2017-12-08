@@ -54,13 +54,13 @@ class CorsListener// implements EventSubscriberInterface
     
     public function onKernelResponse(FilterResponseEvent $objFilterResponseEvent)
     {
-        $request = $event->getRequest();
+        $request = $objFilterResponseEvent->getRequest();
         /*
          * Execute o CORS aqui para garantir que o domínio esteja no sistema
          */
         
         //if (in_array($request->headers->get('origin'), $this->cors)) {
-        if (HttpKernelInterface::MASTER_REQUEST !== $objGetResponseEvent->getRequestType()) {
+        if (HttpKernelInterface::MASTER_REQUEST !== $objFilterResponseEvent->getRequestType()) {
             return;
         }
         $objResponse = $objFilterResponseEvent->getResponse();
