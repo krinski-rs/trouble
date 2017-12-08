@@ -1,0 +1,3 @@
+App\Entity\Troubleticket\SubcasesCoc:
+    type: entity
+    lifecycleCallbacks: {  }

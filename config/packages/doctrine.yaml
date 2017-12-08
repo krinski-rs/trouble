@@ -1,0 +1,46 @@
+parameters:
+    # Adds a fallback DATABASE_URL if the env var is not set.
+    # This allows you to run cache:warmup even if your
+    # environment variables are not available yet.
+    # You should not need to change this value.
+    env(DATABASE_URL): ''
+
+doctrine:
+    dbal:
+        default_connection:   default
+        types:
+            request_type: 'App\DataBase\Postgres\Enum\Types\RequestType'
+        connections:
+            default:
+                driver:   pdo_pgsql
+                host:     192.168.10.192
+                port:     5432
+                dbname:   vogel_toa
+                user:     postgres
+                password: "!#V0gelTel3com*@"
+                server_version: '8.4'
+                charset:  UTF8
+                mapping_types:
+                    request_type: request_type
+        # configure these for your database server
+
+        #server_version: '8.4'
+        #charset: utf8
+
+        # With Symfony 3.3, remove the `resolve:` prefix
+        #url: '%env(resolve:DATABASE_URL)%'
+    orm:
+        default_entity_manager:  default
+        auto_generate_proxy_classes: '%kernel.debug%'
+#        naming_strategy: doctrine.orm.naming_strategy.underscore
+#        auto_mapping: true
+        entity_managers:
+            default:
+                connection: default            
+                mappings:
+                    App:
+                        is_bundle: false
+                        type: yml
+                        dir: '%kernel.project_dir%/config/doctrine'
+                        prefix: 'App\Entity'
+                        alias: Entity

@@ -1,0 +1,80 @@
+App\Entity\Toa\RequestLog:
+    type: entity
+    table: toa.request_log
+    indexes:
+        request_log_message_id:
+            columns:
+                - message_id
+        request_log_action:
+            columns:
+                - action
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        action:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        comment:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        idActivity:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: id_activity
+        userName:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: user_name
+        technician:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        createdAt:
+            type: datetime
+            nullable: false
+            options:
+                default: '2017-08-21 17:53:39.501828'
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: false
+            options:
+                default: '2017-08-21 17:53:39.501828'
+            column: updated_at
+        xmlData:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: xml_data
+        status:
+            type: boolean
+            nullable: true
+        messageId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: message_id
+    lifecycleCallbacks: {  }

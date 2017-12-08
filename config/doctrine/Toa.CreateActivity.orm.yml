@@ -1,0 +1,59 @@
+App\Entity\Toa\CreateActivity:
+    type: entity
+    table: toa.create_activity
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: SEQUENCE
+    fields:
+        activityId:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+            column: activity_id
+        originId:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: origin_id
+        origin:
+            type: request_type
+            nullable: false
+        jsonActivity:
+            type: text
+            nullable: true
+            length: null
+            options:
+                fixed: false
+            column: json_activity
+        jsonRequest:
+            type: text
+            nullable: false
+            length: null
+            options:
+                fixed: false
+            column: json_request
+        creatorUser:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            column: creator_user
+        dateCreate:
+            type: datetime
+            nullable: false
+            options:
+                default: now()
+            column: date_create
+        reportDate:
+            type: datetime
+            nullable: true
+            column: report_date
+    lifecycleCallbacks: {  }

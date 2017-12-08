@@ -1,0 +1,49 @@
+app_troubleticket_reports_ba_post:
+    path: /ba
+    controller: App\Controller\Troubleticket\ReportsController::postReports
+    methods: [POST]
+    defaults:
+        _format: json
+
+app_troubleticket_reports_ba_lista:
+    path: /ba
+    controller: App\Controller\Troubleticket\ReportsController::getReports
+    methods: [GET, OPTIONS]
+    defaults:
+        _format: json
+
+app_troubleticket_reports_ba_get:
+    path: /ba/{id}
+    controller: App\Controller\Troubleticket\ReportsController::getReport
+    methods: [GET]
+    defaults:
+        _format: json
+    requirements:
+        id: '\d+'
+        
+app_troubleticket_reports_ba_put:
+    path: /ba/{id}
+    controller: App\Controller\Troubleticket\ReportsController::putReport
+    methods: [PUT]
+    defaults:
+        _format: json
+    requirements:
+        id: '\d+'
+        
+app_troubleticket_reports_ba_patch:
+    path: /ba/{id}
+    controller: App\Controller\Troubleticket\ReportsController::patchReport
+    methods: [PATCH]
+    defaults:
+        _format: json
+    requirements:
+        id: '\d+'
+        
+app_troubleticket_reports_ba_delete:
+    path: /ba/{id}
+    controller: App\Controller\Troubleticket\ReportsController::deleteReport
+    methods: [DELETE]
+    defaults:
+        _format: json
+    requirements:
+        id: '\d+'
