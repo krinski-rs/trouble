@@ -33,7 +33,7 @@ class CorsListener// implements EventSubscriberInterface
             $objResponse = new Response();
             $objResponse->headers->set('Access-Control-Allow-Credentials', 'true');
             $objResponse->headers->set('Access-Control-Allow-Methods', 'POST,GET,PUT,DELETE,PATCH,OPTIONS');
-            $objResponse->headers->set('Access-Control-Allow-Headers', 'AccessToken,Content-Type,AuthVersion,AppKey,Cookie');
+            $objResponse->headers->set('Access-Control-Allow-Headers', 'AccessToken,Content-Type,AuthVersion,AppKey,Cookie,Accept,Origin,Authorization');
             $objResponse->headers->set('Access-Control-Max-Age', 3600);
             $objGetResponseEvent->setResponse($objResponse);
             return ;
@@ -58,15 +58,16 @@ class CorsListener// implements EventSubscriberInterface
         /*
          * Execute o CORS aqui para garantir que o domínio esteja no sistema
          */
+        
         //if (in_array($request->headers->get('origin'), $this->cors)) {
         if (HttpKernelInterface::MASTER_REQUEST !== $objGetResponseEvent->getRequestType()) {
             return;
         }
         $objResponse = $objFilterResponseEvent->getResponse();
         $objResponse->headers->set('Access-Control-Allow-Origin', '*');
-        $objResponse->headers->set('Access-Control-Allow-Methods', 'POST,GET,PUT,DELETE,PATCH,OPTIONS');
         $objResponse->headers->set('Access-Control-Allow-Credentials', 'true');
-        $objResponse->headers->set('Access-Control-Allow-Headers', 'AccessToken,Content-Type,AuthVersion,AppKey,Cookie');
+        $objResponse->headers->set('Access-Control-Allow-Methods', 'POST,GET,PUT,DELETE,PATCH,OPTIONS');
+        $objResponse->headers->set('Access-Control-Allow-Headers', 'AccessToken,Content-Type,AuthVersion,AppKey,Cookie,Accept,Origin,Authorization');
     }
 }
 
